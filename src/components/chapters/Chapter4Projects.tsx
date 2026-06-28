@@ -86,7 +86,7 @@ export default function Chapter4Projects() {
                   )}
 
                   <div className={styles.actions}>
-                    {("live" in project && project.live !== "#") && (
+                    {("live" in project && (project as any).live !== "#") && (
                       <a
                         href={project.live}
                         target="_blank"
@@ -102,7 +102,7 @@ export default function Chapter4Projects() {
                         Live Demo ↗
                       </a>
                     )}
-                    {("github" in project && project.github !== "#") && (
+                    {("github" in project && (project as any).github !== "#") && (
                       <a
                         href={(project as any).github}
                         target="_blank"
