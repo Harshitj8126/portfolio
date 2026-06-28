@@ -141,7 +141,6 @@ export const PROJECTS = [
     technologies: ["LangGraph", "Multi-Agent", "3D UI"],
     highlightTags: ["Agentic Orchestrator", "Productivity"],
     github: "https://github.com/Harshitj8126/omnii-ai",
-    live: "#",
     color: "#FF0055",
   },
   {

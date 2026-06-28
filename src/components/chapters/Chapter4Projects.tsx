@@ -86,7 +86,7 @@ export default function Chapter4Projects() {
                   )}
 
                   <div className={styles.actions}>
-                    {("live" in project && (project as any).live !== "#") && (
+                    {"live" in project && project.live && (
                       <a
                         href={project.live}
                         target="_blank"
@@ -102,9 +102,9 @@ export default function Chapter4Projects() {
                         Live Demo ↗
                       </a>
                     )}
-                    {("github" in project && (project as any).github !== "#") && (
+                    {"github" in project && project.github && (
                       <a
-                        href={(project as any).github}
+                        href={project.github}
                         target="_blank"
                         rel="noopener noreferrer"
                         className={styles.btnGithub}
@@ -112,7 +112,7 @@ export default function Chapter4Projects() {
                         onClick={(e) => {
                           e.preventDefault();
                           e.stopPropagation();
-                          window.open((project as any).github, '_blank');
+                          window.open(project.github, '_blank');
                         }}
                       >
                         GitHub
