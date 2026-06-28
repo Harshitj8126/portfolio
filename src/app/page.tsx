@@ -1,66 +1,39 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+"use client";
+
+import dynamic from "next/dynamic";
+import SmoothScrollProvider from "@/providers/SmoothScrollProvider";
+import Navbar from "@/components/navigation/Navbar";
+import Chapter1Hero from "@/components/chapters/Chapter1Hero";
+import Chapter2About from "@/components/chapters/Chapter2About";
+import Chapter3Skills from "@/components/chapters/Chapter3Skills";
+import Chapter4Projects from "@/components/chapters/Chapter4Projects";
+import Chapter5Experience from "@/components/chapters/Chapter5Experience";
+import Chapter6Contact from "@/components/chapters/Chapter6Contact";
+
+// Lazy load Three.js to avoid SSR issues and reduce initial bundle
+const CinematicCanvas = dynamic(
+  () => import("@/components/three/CinematicCanvas"),
+  { ssr: false }
+);
 
 export default function Home() {
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>To get started, edit the page.tsx file.</h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+    <SmoothScrollProvider>
+      {/* Three.js Particle Background */}
+      <CinematicCanvas />
+
+      {/* Navigation */}
+      <Navbar />
+
+      {/* Chapters */}
+      <main>
+        <Chapter1Hero />
+        <Chapter2About />
+        <Chapter3Skills />
+        <Chapter4Projects />
+        <Chapter5Experience />
+        <Chapter6Contact />
       </main>
-    </div>
+    </SmoothScrollProvider>
   );
 }

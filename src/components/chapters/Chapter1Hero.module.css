@@ -1,0 +1,169 @@
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #000;
+}
+
+/* ─── Full Screen Video Background ─── */
+.videoBackground {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  opacity: 0;
+  pointer-events: auto;
+  transform: scale(1.05);
+  transition: opacity 2s var(--ease-cinematic) 0.5s, transform 2s var(--ease-cinematic) 0.5s;
+}
+
+.videoBackground::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.videoVisible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ─── Content Layout ─── */
+.content {
+  position: relative;
+  z-index: 5;
+  width: 100%;
+  max-width: var(--max-width);
+  height: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  text-align: left;
+  pointer-events: none; 
+}
+
+/* ─── Terminal Boot ─── */
+.terminal {
+  position: absolute;
+  top: 50%;
+  left: clamp(1.5rem, 5vw, 4rem);
+  transform: translateY(-50%);
+  width: 100%;
+  max-width: 600px;
+  transition: opacity 0.8s var(--ease-cinematic), transform 0.8s var(--ease-cinematic);
+  z-index: 10;
+  pointer-events: none;
+}
+
+.terminalDone {
+  opacity: 0;
+  transform: translateY(-60%) scale(0.95);
+}
+
+/* ─── Hero Content (After Boot) ─── */
+.heroContent {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 0 clamp(1.5rem, 5vw, 4rem);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 1.5s var(--ease-cinematic) 1s;
+}
+
+.heroVisible {
+  opacity: 1;
+}
+
+/* ─── Top Label ─── */
+.topLabel {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  color: var(--color-text-dim);
+  text-transform: uppercase;
+  margin-bottom: var(--space-4);
+}
+
+/* ─── Main Name ─── */
+.mainName {
+  font-size: clamp(2rem, 6vw, 4.5rem);
+  font-weight: var(--font-medium);
+  letter-spacing: 0.15em;
+  line-height: 1.1;
+  color: var(--color-text-primary);
+  text-transform: uppercase;
+  margin-bottom: var(--space-8);
+  margin-top: 0;
+}
+
+/* ─── Start Button ─── */
+.startBtn {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: #FFB547;
+  background: transparent;
+  border: 1px solid #FFB547;
+  padding: 14px 40px;
+  border-radius: var(--radius-full);
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.4s var(--ease-cinematic);
+  position: relative;
+  overflow: hidden;
+  pointer-events: auto;
+}
+
+.startBtn:hover {
+  background: rgba(255, 181, 71, 0.1);
+  box-shadow: 0 0 20px rgba(255, 181, 71, 0.2);
+  transform: scale(1.05);
+}
+
+/* ─── Bottom Tagline ─── */
+.bottomTagline {
+  position: absolute;
+  bottom: 15%;
+  left: clamp(1.5rem, 5vw, 4rem);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: var(--font-bold);
+  letter-spacing: 0.2em;
+  color: var(--color-text-primary); /* Brighter color for clear visibility */
+  text-transform: uppercase;
+  text-align: left;
+}
+
+/* ─── Scroll Indicator Wrapper ─── */
+.scrollWrapper {
+  position: absolute;
+  bottom: var(--space-8);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .mainName {
+    letter-spacing: 0.1em;
+  }
+  
+  .bottomTagline {
+    bottom: 20%;
+    line-height: 1.8;
+  }
+}

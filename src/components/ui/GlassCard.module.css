@@ -1,0 +1,64 @@
+.card {
+  position: relative;
+  background: var(--color-glass);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid var(--color-glass-border);
+  border-radius: var(--radius-lg);
+  transition: all var(--duration-slow) var(--ease-cinematic);
+  overflow: hidden;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.15),
+    transparent
+  );
+}
+
+/* Padding Variants */
+.pad-sm { padding: var(--space-4); }
+.pad-md { padding: var(--space-6); }
+.pad-lg { padding: var(--space-8); }
+.pad-xl { padding: var(--space-12); }
+
+/* Hover */
+.hoverable:hover {
+  background: var(--color-glass-hover);
+  border-color: var(--color-glass-border-hover);
+  transform: translateY(-4px);
+}
+
+/* Glow Variants */
+.glow-cyan {
+  box-shadow: var(--glow-cyan);
+}
+
+.glow-cyan:hover {
+  box-shadow: var(--glow-cyan-strong);
+}
+
+.glow-green {
+  box-shadow: var(--glow-green);
+}
+
+.glow-orange {
+  box-shadow: var(--glow-orange);
+}
+
+.glow-none {
+  box-shadow: none;
+}
+
+@media (max-width: 768px) {
+  .pad-lg { padding: var(--space-5); }
+  .pad-xl { padding: var(--space-8); }
+}

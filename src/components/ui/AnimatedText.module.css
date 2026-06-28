@@ -1,0 +1,36 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.wordWrap {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+}
+
+.word {
+  display: inline-block;
+  transform: translateY(110%);
+  opacity: 0;
+  transition: transform 0.8s cubic-bezier(0.22, 0.61, 0.36, 1),
+              opacity 0.8s cubic-bezier(0.22, 0.61, 0.36, 1);
+  will-change: transform, opacity;
+}
+
+.word.visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.fadeContainer {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s cubic-bezier(0.22, 0.61, 0.36, 1),
+              transform 1s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.fadeContainer.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
